@@ -1,0 +1,19 @@
+CC = g++
+CFLAGS = -Wall
+PROG = 201101144
+
+SRCS = 201101144_new.cpp imageloader.cpp
+
+ifeq ($(shell uname),Darwin)
+	LIBS = -framework OpenGL -framework GLUT
+else
+	LIBS = -lGL -lglut -lGLU
+endif
+
+all: $(PROG)
+
+$(PROG):	$(SRCS)
+	$(CC) $(CFLAGS) -o $(PROG) $(SRCS) $(LIBS)
+
+clean:
+	rm -f $(PROG)
